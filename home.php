@@ -23,11 +23,27 @@ include 'header.php';
                 <input type="file" id="inputFile" style="display: none" accept="image/*" onchange="setImage(event)"/>
                 <button class="button2" hidden id="btShow" onclick="showCap()">Show Caption</button>
             </div>
-            <div class="row" style="margin-top: 10px">
+<!--            <div class="row" style="margin-top: 10px">-->
+<!--                <textarea cols="45" rows="6" class="area1" disabled="" id="textarea" hidden></textarea>-->
+<!--            </div>-->
+            <div class="rows">
+                <a class="text2" style="color: #AC5252;width: 100%" id="pred" hidden><b>Caption Predict</b></a>
+            </div>
+            <div class="row" style="margin-top: 5px">
                 <textarea cols="45" rows="6" class="area1" disabled="" id="textarea" hidden></textarea>
             </div>
             <div class="row" style="margin-top: 10px">
                 <button class="button2" onclick="editCap()" hidden id="btEdit">Edit Caption</button>
+<!--                <button class="button2" onclick="sendCap()" hidden id="btSend">Send New Caption</button>-->
+            </div>
+            <div class="rows">
+                <a class="text2" style="color: #AC5252;width: 100%" id="edit" hidden><b>Edit Caption</b></a>
+            </div>
+            <div class="row" style="margin-top: 10px">
+                <textarea cols="45" rows="6" class="area1" id="textarea2" hidden></textarea>
+            </div>
+            <div class="row" style="margin-top: 10px">
+<!--                <button class="button2" onclick="editCap()" hidden id="btEdit">Edit Caption</button>-->
                 <button class="button2" onclick="sendCap()" hidden id="btSend">Send New Caption</button>
             </div>
 
@@ -45,11 +61,14 @@ include 'header.php';
     function sendCap() {
         document.getElementById("btSend").hidden = true;
         document.getElementById("btEdit").hidden = true;
-        document.getElementById("textarea").disabled = true;
+        document.getElementById("textarea2").disabled = true;
     }
     function editCap() {
-        document.getElementById("textarea").disabled = false;
+        document.getElementById("btShow").hidden = true;
+        document.getElementById("textarea2").hidden = false;
+        document.getElementById("edit").hidden = false;
         document.getElementById("btSend").hidden = false;
+        document.getElementById("textarea2").disabled = false;
     }
     function clickButt(){
         document.getElementById('inputFile').click();
@@ -57,11 +76,13 @@ include 'header.php';
     function showCap() {
         document.getElementById("textarea").value = "คำธิบายภาพ";
         document.getElementById("btEdit").hidden = false;
+        document.getElementById("textarea").hidden = false;
+        document.getElementById("pred").hidden = false;
     }
     function setImage(event) {
         document.getElementById("myImg").src = URL.createObjectURL(event.target.files[0]);
         document.getElementById("btShow").hidden = false;
-        document.getElementById("textarea").hidden = false;
+
     }
     // var loadFile = function (event) {
     //     var image = document.getElementById('myImg');
